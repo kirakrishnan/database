@@ -1,0 +1,103 @@
+/*********************************************************************
+CSCI 566 - Assignment 1 - Semester(Spring-2015)
+
+Programmer: Aravinda Krishnan V
+Section:    3
+TA:         Robert Durham
+Date Due:   1/30/2015
+
+Purpose:    The program will process sales information for a company.
+            It prompts for 3 pieces of information product number,no
+            of items,price for one of those items.Then it displays 
+            the total number of items sold,total cost for each product
+            and total no of invalid sales.
+********************************************************************/
+#include <iostream>
+using namespace std;
+int main()                                                                    
+{                                                                             
+  int pno,noi;
+  float cst;
+  float gitem=0,gtotal=0,giz=0;                                                
+  float witem=0,wtotal=0,wid=0;                                                
+  float ditem=0,dtotal=0,doo=0;                                                
+  float titem=0,ttotal=0,thi=0;
+  float iitem=0,itotal=0,inv=0;
+  do                                                                
+    {
+    cout<<"enter the product number of the item sold:"<<"\n";
+    cin>>pno;
+     if(pno>=0&&pno<=999)                 
+       {
+        cout<<"enter the no of items sold:" <<"\n";
+        cin>>noi;   
+        cout<<"enter the cost of each item:"<<"\n";                                    
+        cin>>cst;                                                                    
+        gtotal=noi*cst;                                                               
+        gitem=noi+gitem;                                                              
+        giz=giz+gtotal;                                                               
+        noi=0;                                                                        
+        cst=0;                                                                        
+       }
+     else if(pno>=1000&&pno<=1999)                                                   
+       {                                                                             
+        cout<<"enter the no of items sold:"<<"\n";                                     
+        cin>>noi;                                                                     
+        cout<<"enter the cost of each item:"<<"\n";                                   
+        cin>>cst;                                                                     
+        wtotal=noi*cst;                                                               
+        witem=noi+witem;                                                              
+        wid=wid+wtotal;                                                               
+        noi=0;                                                                        
+        cst=0;                                                                        
+       }
+     else if(pno>=2000&&pno<=2999)                                                   
+       {                                                                             
+        cout<<"enter the no of items sold:"<<"\n";                                     
+        cin>>noi;                                                                     
+        cout<<"enter the cost of each item:"<<"\n";                                   
+        cin>>cst;                                                                     
+        dtotal=noi*cst;                                                               
+        ditem=noi+ditem;                                                              
+        doo=doo+dtotal;                                                               
+        noi=0;                                                                        
+        cst=0;                                                                        
+       }
+     else if(pno>=3000&&pno<=3999)                                                   
+       {                                                                             
+        cout<<"enter the no of items sold:"<<"\n";                                     
+        cin>>noi;                                                                     
+        cout<<"enter the cost of each item:"<<"\n";                                   
+        cin>>cst;                                                                     
+        ttotal=noi*cst;                                                               
+        titem=noi+titem;                                                              
+        thi=thi+ttotal;                                                               
+        noi=0;                                                                        
+        cst=0;                                                                        
+       }
+     else if(pno>=4000)                                                             
+       {
+        cout<<"enter the no of items sold:"<<"\n";                                     
+        cin>>noi;                                                                     
+        cout<<"enter the cost of each item:"<<"\n";                                   
+        cin>>cst;                                                                     
+        itotal=noi*cst;                                                               
+        iitem=noi+iitem;                                                              
+        inv=inv+itotal;                                                               
+        noi=0;                                                                        
+        cst=0;
+       }                                   
+    }while(pno!=-1);
+cout<< "****** Product Sales Summary ******"<<"\n\n";                                  
+cout<< "Gizmo count:\t\t " << gitem<< "\n";
+cout<< "Gizmo Sales Total:\t " << giz<< "\n\n";
+cout<< "Widget count:\t\t " << witem<< "\n";
+cout<< "Widget Sales Total:\t " << wid<< "\n\n";
+cout<< "Doohickey count:\t " << ditem<< "\n";
+cout<< "Doohickey Sales Total:\t " << doo<< "\n\n";
+cout<< "Thingamajig count:\t " << titem<< "\n";
+cout<< "Thingamajig Sales Total: " << thi<< "\n\n";
+cout<< "Invalid sales:\t\t " << iitem<< "\n\n";
+cout<<"************************************"<<"\n\n";
+return 0;
+}

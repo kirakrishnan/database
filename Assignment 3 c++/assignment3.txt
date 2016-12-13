@@ -1,0 +1,124 @@
+/**********************************************************************
+CSCI 566 - Assignment 3 - Semester(Spring-2015)
+
+Programmer: Aravinda Krishnan V
+Section   : 3
+TA        : Robert Durham
+Date Due  : 03/22/2015
+ZID	  : Z1760288
+Purpose   : This program takes the password as input and checks all the 
+            conditions and prints whether it is valid or not if it is 
+            invalid it specifies what is missing in the password. And in 
+            the end prints the number of valid and invalid passwords 
+            attempted.
+
+***********************************************************************/
+
+#include <stdio.h>
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+
+int isUpper(char ch);
+int isLower(char ch);
+int isDigit(char ch);
+
+
+int isUpper(char ch)
+{
+	if(ch > 64 && ch < 92)
+		return 1;
+	else
+		return 0;
+}
+
+int isLower(char ch)
+{
+	if(ch > 96 && ch < 124)
+		return 1;
+	else
+		return 0;	
+}
+
+int isDigit(char ch)
+{
+	if(ch > 47 && ch < 58)
+		return 1;
+	else
+		return 0;
+}
+
+
+int main()
+{
+	char ch;
+	int digit_count = 0, lower_count = 0, upper_count = 0, pass_length = 0, pass_valid = 0, pass_invalid = 0;
+	cout << "\nEnter password, ! at the beginning of the line to end \n";
+	cin.get(ch);
+	
+	
+	while (ch != '!')
+	{
+	       pass_length++;
+	       cout.put(ch);
+	       if(isUpper(ch) == 1)
+		          upper_count++;
+	       else if (isLower(ch) == 1)
+                          lower_count++;
+	       else if (isDigit(ch) == 1)
+		          digit_count++;
+		
+		while (ch != '\n')
+		{
+			cin.get(ch);
+			pass_length++;
+			cout.put(ch);
+			if(isUpper(ch) == 1)
+				upper_count++;
+			else if (isLower(ch) == 1)
+				lower_count++;
+			else if (isDigit(ch) == 1)
+				digit_count++;
+		}
+		
+		if(pass_length > 6 && digit_count > 0 && lower_count > 0 && upper_count > 0)
+		{
+			cout << "valid password\n";
+			pass_valid++;
+		}
+		else
+		{
+			pass_invalid++;
+			if (pass_length < 6)
+			{
+				cout << "invalid password, too few characters\n";
+			}
+			if (digit_count == 0)
+			{
+				cout << "invalid password, missing digit\n";
+			}
+			if (lower_count == 0)
+			{
+				cout << "invalid password, missing lowercase letter\n";
+			}
+			if (upper_count == 0)
+			{
+				cout << "invalid password, missing uppercase letter\n";
+			}
+		}
+				
+		pass_length = 0;
+		digit_count = 0; 
+		lower_count = 0; 
+		upper_count = 0;
+		cout << "\nEnter password, ! at the beginning of the line to end \n";
+		cin.get(ch);
+	}
+	
+	cout << "\nNumber of valid passwords: \t" << pass_valid;
+	cout << "\nNumber of invalid passwords: \t" << pass_invalid << endl;
+	return 0;
+}
+
